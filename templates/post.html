@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Header-->
+{% for post in posts: %}
+{% if post['id'] == num: %}
+<header class="masthead" style="background-image: url({{post.image_url}})">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+
+                    <h1>{{ post['title'] }}</h1>
+                    <h2 class="subheading">{{ post['subtitle'] }}</h2>
+                    <span class="meta">
+                                Posted by
+                                <a href="#!">Zoul Aimi</a>
+                                on {{ post['date'] }}
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endif %}
+{% endfor %}
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {% for post in posts: %}
+                {% if post['id'] == num: %}
+                <p>{{ post['body'] }}</p>
+                <!-- <p>
+                    Placeholder text by
+                    <a href="http://spaceipsum.com/">Space Ipsum</a>
+                    &middot; Images by
+                    <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
+                </p> -->
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}
